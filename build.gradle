@@ -1,17 +1,22 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
-repositories {
-    mavenCentral()
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.1.1'
+    }
 }
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '25.0.3'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName rootProject.sdkVersionName
         consumerProguardFiles 'stickers-proguard-rules.pro'
@@ -32,23 +37,54 @@ android {
 
 
 dependencies {
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.squareup.okhttp3:okhttp:3.1.2'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
-    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
+//    compile 'com.github.bumptech.glide:glide:3.7.0'
+//    compile 'com.squareup.okhttp3:okhttp:3.1.2'
+//    compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
+//    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+//    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+//    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
+
     // TODO EventBus 3.0?
-    compile 'de.greenrobot:eventbus:2.4.0'
-    compile 'com.android.support:design:25.3.1'
-    compile "com.android.support:appcompat-v7:25.3.1"
+//    compile 'de.greenrobot:eventbus:2.4.0'
+//    compile 'com.android.support:design:25.3.1'
+//    compile 'com.android.support:appcompat-v7:25.3.1'
+//    compile 'io.reactivex:rxandroid:1.0.1'
+//    compile 'io.reactivex:rxjava:1.1.3'
+//    compile 'com.anjlab.android.iab.v3:library:1.0.26@aar'
+//    compile 'com.bartoszlipinski:recyclerviewheader2:2.0.1'
+//    compile ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.8.6@aar'){
+//        transitive=true
+//    }
+
+    /**
+     ** UPDATE INTO LATEST LIBRARY VERSIONS
+     **/
+
+    // GLIDE
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
+
+    // OKHTTP
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    // RETROFIT
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
+
+    // EVENTBUS
+    compile 'org.greenrobot:eventbus:3.1.1'
+
+    // SUPPORT
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+
+    // RX
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'io.reactivex:rxjava:1.1.3'
+
     compile 'com.anjlab.android.iab.v3:library:1.0.26@aar'
-    compile 'com.bartoszlipinski:recyclerviewheader2:2.0.1'
-    compile ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.8.6@aar'){
-        transitive=true
-    }
 }
 
 // Publish archive task

@@ -172,12 +172,14 @@ public class StickersListFragment extends Fragment implements LoaderManager.Load
                 Uri uri = Uri.fromFile(StorageManager.getInstance().getImageFile(contentId));
                 Glide.with(getContext())
                         .load(uri)
-                        .dontAnimate()
-                        .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+                        .apply(new RequestOptions()
+                                .dontAnimate()
+                                .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL))
                         .thumbnail(Glide.with(getContext())
                                 .load(uri)
-                                .dontAnimate()
-                                .override(clickedViewSize, clickedViewSize))
+                                .apply(new RequestOptions()
+                                        .dontAnimate()
+                                        .override(clickedViewSize, clickedViewSize)))
                         .into(imageView);
             }
             return dialog;
@@ -328,8 +330,9 @@ public class StickersListFragment extends Fragment implements LoaderManager.Load
             if (uri != null) {
                 Glide.with(mAdapterFragment)
                         .load(uri)
-                        .placeholder(android.R.color.transparent)
-                        .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                        .apply(new RequestOptions()
+                                .placeholder(android.R.color.transparent)
+                                .diskCacheStrategy(DiskCacheStrategy.RESULT))
                         .into(new ImageViewTarget<GlideDrawable>(viewHolder.iv) {
                             @Override
                             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {

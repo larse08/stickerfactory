@@ -75,9 +75,10 @@ public class StickerLoader {
         if (iv.getTag(R.id.sp_loader_key) == StickerLoader.this) {
             if (requestManager != null)
                 requestManager.load(file)
-                        .placeholder(placeholderDrawable)
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+                        .apply(new RequestOptions()
+                                .placeholder(placeholderDrawable)
+                                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL))
                         .into(iv);
         } else {
             // check for corruption

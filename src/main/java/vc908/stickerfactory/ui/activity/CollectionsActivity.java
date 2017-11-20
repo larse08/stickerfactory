@@ -265,7 +265,7 @@ public class CollectionsActivity extends BaseActivity {
 
             Glide.with(CollectionsActivity.this)
                     .load(StorageManager.getInstance().getImageFile(NamesHelper.getMainIconName(holder.packName)))
-                    .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                    .apply(new Requestoptions().diskCacheStrategy(DiskCacheStrategy.RESULT))
                     .into(holder.packImageView);
 
             holder.mRemoveView.setOnClickListener(v -> performDelete(holder, position));

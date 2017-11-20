@@ -471,8 +471,9 @@ public class StickersKeyboardController {
                 if (uri != null) {
                     Glide.with(contextReference.get())
                             .load(uri)
-                            .placeholder(android.R.color.transparent)
-                            .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                            .apply(new RequestOptions()
+                                    .placeholder(android.R.color.transparent)
+                                    .diskCacheStrategy(DiskCacheStrategy.RESULT))
                             .into(new ImageViewTarget<GlideDrawable>(viewHolder.iv) {
                                 @Override
                                 public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {

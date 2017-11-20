@@ -573,8 +573,9 @@ public class StickersFragment extends Fragment implements LoaderManager.LoaderCa
             if (tabFile != null && tabFile.exists()) {
                 Glide.with(StickersFragment.this)
                         .load(tabFile)
-                        .placeholder(tabPlaceholderDrawable)
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .apply(new RequestOptions()
+                                .placeholder(tabPlaceholderDrawable)
+                                .diskCacheStrategy(DiskCacheStrategy.NONE))
                         .into(tabView);
             } else {
                 tabView.setImageDrawable(tabPlaceholderDrawable);
